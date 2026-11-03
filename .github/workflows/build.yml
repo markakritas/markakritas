@@ -1,0 +1,36 @@
+name: rebuild profile
+
+on:
+  schedule:
+    - cron: "17 2 * * *" # nightly, ~06:17 in Yerevan
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/**", ".github/workflows/build.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rebuild-profile
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v10.3.0
+
+      - name: render figures
+        run: uv run scripts/build.py
+
+      - name: commit if anything changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: nightly rebuild ($(date -u +%F))"
+          git push

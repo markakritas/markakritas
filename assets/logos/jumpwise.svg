@@ -1,0 +1,15 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="128" height="128" fill="white"/>
+  <!-- Nodes -->
+  <circle cx="32" cy="32" r="16" fill="black"/>
+  <circle cx="32" cy="32" r="10" fill="white"/>
+  <circle cx="32" cy="96" r="16" fill="black"/>
+  <circle cx="32" cy="96" r="10" fill="white"/>
+  <circle cx="96" cy="96" r="16" fill="black"/>
+  <circle cx="96" cy="96" r="10" fill="white"/>
+  <!-- Edges (group theory Cayley graph style) -->
+  <line x1="32" y1="46" x2="32" y2="82" stroke="black" stroke-width="6"/>
+  <line x1="46" y1="96" x2="82" y2="96" stroke="black" stroke-width="6"/>
+  <!-- Monospaced 'jw' letters at top right -->
+  <text x="78" y="40" font-family="Maple Mono" font-size="28" font-weight="bold" fill="black">jw</text>
+</svg>

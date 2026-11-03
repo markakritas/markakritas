@@ -1,0 +1,5 @@
+target-version = "py312"
+
+[lint]
+extend-select = ["UP", "B", "SIM"]
+ignore = ["I001"]  # imports are grouped by hand
